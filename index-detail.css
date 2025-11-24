@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kanit", sans-serif;
+}
+
+.container {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+/* Detail Page Specific Styles */
+
+.detail-page {
+    padding-top: 50px;
+    min-height: 80vh;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--primary-dark);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+    transform: translateX(-5px);
+}
+
+.detail-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 40px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.gallery-section {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.gallery-container {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.gallery-header h2 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+}
+
+.carousel-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--secondary-color);
+    color: var(--primary-dark);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.carousel {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+}
+
+.carousel-item {
+    min-width: 100%;
+    /* Show one item at a time by default, or adjust for multiple */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    height: 300px;
+    /* Fixed height for mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item img,
+.carousel-item video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.placeholder-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    color: var(--gray);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Responsive Carousel */
+@media (min-width: 768px) {
+    .carousel-item {
+        min-width: calc(50% - 10px);
+        /* Show 2 items */
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel-item {
+        min-width: calc(33.333% - 14px);
+        /* Show 3 items */
+        height: 400px;
+    }
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content img,
+.lightbox-content video {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add cursor pointer to gallery items to indicate clickability */
+.carousel-item img,
+.carousel-item video {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover,
+.carousel-item video:hover {
+    transform: scale(1.02);
+}
